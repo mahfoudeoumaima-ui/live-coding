@@ -1,5 +1,5 @@
 
-# Slide 1 : Erreur JSON
+#  Erreur JSON
 
 ### `Unexpected token '<'`
 
@@ -7,7 +7,7 @@ JavaScript attend une réponse JSON, mais reçoit du code PHP (`<?php`).
 
 ---
 
-# Slide 2 : Causes possibles
+#  Causes possibles
 
 1. Le serveur PHP n'est pas lancé.
 2. Le chemin de l'API est incorrect.
@@ -15,7 +15,7 @@ JavaScript attend une réponse JSON, mais reçoit du code PHP (`<?php`).
 
 ---
 
-# Slide 3 : Solutions
+#  Solutions
 
 - Lancer le serveur PHP.
 - Vérifier l'URL de l'API.
@@ -24,7 +24,7 @@ JavaScript attend une réponse JSON, mais reçoit du code PHP (`<?php`).
 
 ---
 
-# Slide 4 : Vérification
+#  Vérification
 
 1. Ouvrir l'URL de l'API dans le navigateur.
 2. Vérifier que la réponse est un JSON valide.
