@@ -1,52 +1,48 @@
-const btnajouter = document.getElementById("btn-ajouter")
+const btnAjouter = document.getElementById("btn-ajouter")
 const divform = document.getElementById("div_form")
 const formcat = document.getElementById("form-categorie")
-const tbody = document.getElementById("tbody")
 const nom = document.getElementById("nom")
 const description = document.getElementById("description")
-btnajouter.addEventListener('click',function(){
+const tbody = document.getElementById("tbody")
+
+btnAjouter.addEventListener('click',function(){
     divform.classList.remove("hidden")
 })
-function chargerCategories(){
+function charger(){
     fetch("/backend/api.php")
-    .then(respence=>respence.json())
+    .then(respense=>respense.json())
     .then(categories=>{
-        tbody.innerHTML="";
-        categories.forEach(cat => {
-            tbody.innerHTML += `
+        tbody.innerHTML=""
+        categories.forEach(cate => {
+            tbody.innerHTML +=`
             <tr>
-            <td>${cat.id}</td>
-            <td>${cat.nom}</td>
-            <td>${cat.description}</td>
-            </tr>
-            
-            `
-            
+            <td>${cate.id}</td>
+            <td>${cate.nom}</td>
+            <td>${cate.description}</td></tr>`
         });
     })
- 
+    .catch(error =>console.error(error))
 }
-formcat.addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const categories = {
-        nom: nom.value,
-        description: description.value
-    };
-
-    fetch("/backend/api.php", {
-        method: "POST",
-        headers: {"Content-type": "application/json"},
+formcat.addEventListener("submit",function(event){
+    event.preventDefault()
+    const categories={
+        nom:nom.value,
+        description:description.value
+    }
+    fetch("/backend/api.php" , {
+        method : "POST",
+        headers:{"Content-type": "application/json"},
         body: JSON.stringify(categories)
     })
-    .then(respence => respence.json())
-    .then(data => {
-        chargerCategories();
-        divform.classList.add("hidden");
-        formcat.reset();
+    .then(respense=>respense.json)
+    .then(data=>{
+        charger()
+        divform.classList.add("hidden")
+
     })
-    
+    .catch(error =>console.error(error))
 })
 
-chargerCategories()
 
+
+charger()
